@@ -73,12 +73,16 @@ class BinaryTree {
     find_DFT(value) {
         const unvisited = []; //Stack
         unvisited.push(this.root);
-        let current = this.root;
 
-        while(current != null){
-            let current = current.left;
-
-            unvisited.push(current);
+        while(unvisited.length > 0){
+            let current = unvisited.pop();
+            console.log(current.data);
+            if (current.right) {
+                unvisited.push(current.right);
+            }
+            if(current.left) {
+                unvisited.push(current.left);
+            }
         }
     }
 
@@ -89,7 +93,7 @@ class BinaryTree {
 
         this.inorder(node.left);
 
-        console.log(node.value);
+        console.log(node.data);
 
         this.inorder(node.right);
     }
@@ -119,4 +123,17 @@ class BinaryTree {
     }
 }
 
-module.exports = BinaryTree;
+function main() {
+    let avl = new BinaryTree();
+    let values = [5,4,6,12,3,9,10,7];
+
+    for(let i = 0; i < values.length; i++) {
+        avl.insert(values[i]);
+    }
+
+    console.log(JSON.stringify(avl));
+    // avl.inorder(avl.root);
+    avl.find_DFT(2);
+}
+
+main();
