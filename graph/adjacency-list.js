@@ -5,29 +5,29 @@ class AdjacencyList {
         this.list = new Map();
     }
 
-    insert_undirected(fromVertex, toVertex) {
+    insert_undirected(fromVertex, toVertex, weight) {
         if(!this.list.has(fromVertex)) {
-            this.list.set(fromVertex, [ toVertex ]);
+            this.list.set(fromVertex, [{ vertex: toVertex, weight }]);
         }
         if(!this.list.has(toVertex)) {
-            this.list.set(toVertex, [fromVertex])
+            this.list.set(toVertex, [{ vertex: fromVertex, weight }])
         }
         else {
-            this.list.get(fromVertex).push(toVertex);
-            this.list.get(toVertex).push(fromVertex);
+            this.list.get(fromVertex).push({ vertex: toVertex, weight });
+            this.list.get(toVertex).push({ vertex: fromVertex, weight });
         }
     }
 
-    insert(fromVertex, toVertex) {
+    insert(fromVertex, toVertex, distance) {
         if(!this.list.has(toVertex)) {
             this.list.set(toVertex, []);
         }
 
         if(!this.list.has(fromVertex)) {
-            this.list.set(fromVertex, [ toVertex ]);
+            this.list.set(fromVertex, [{ vertex: toVertex, distance }]);
         }
         else {
-            this.list.get(fromVertex).push(toVertex);
+            this.list.get(fromVertex).push({ vertex: toVertex, distance });
         }
     }
 
@@ -115,7 +115,9 @@ class AdjacencyList {
 
     printGraph() {
         for(let [key, values] of this.list) {
-            console.log(key, values);
+            for(let vertex of values) {
+                console.log(key, vertex.vertex, vertex.distance );
+            }
         }
     }
 }
@@ -123,23 +125,30 @@ class AdjacencyList {
 function main() {
     const undirectedGraph = new AdjacencyList();
 
-    undirectedGraph.insert_undirected(0, 1);
-    undirectedGraph.insert_undirected(0, 4);
-    undirectedGraph.insert_undirected(1, 2);
-    undirectedGraph.insert_undirected(1, 3);
-    undirectedGraph.insert_undirected(1, 4);
-    undirectedGraph.insert_undirected(2, 3);
-    undirectedGraph.insert_undirected(3, 4);
+    undirectedGraph.insert_undirected(0, 1, 4);
+    undirectedGraph.insert_undirected(0, 7, 8);
+    undirectedGraph.insert_undirected(1, 2, 8);
+    undirectedGraph.insert_undirected(1, 7, 11);
+    undirectedGraph.insert_undirected(2, 3, 7);
+    undirectedGraph.insert_undirected(2, 8, 2);
+    undirectedGraph.insert_undirected(2, 5, 4);
+    undirectedGraph.insert_undirected(3, 4, 9);
+    undirectedGraph.insert_undirected(3, 5, 14);
+    undirectedGraph.insert_undirected(4, 5, 10);
+    undirectedGraph.insert_undirected(5, 6, 2);
+    undirectedGraph.insert_undirected(6, 8, 6);
+    undirectedGraph.insert_undirected(7, 6, 1);
+    undirectedGraph.insert_undirected(7, 8, 7);
 
-    const directedGraph = new AdjacencyList();
+    // const directedGraph = new AdjacencyList();
 
-    directedGraph.insert(0, 1);
-    directedGraph.insert(0, 4);
-    directedGraph.insert(1, 2);
-    directedGraph.insert(1, 3);
-    directedGraph.insert(1, 4);
-    directedGraph.insert(2, 3);
-    directedGraph.insert(3, 4);
+    // directedGraph.insert(0, 1, 3);
+    // directedGraph.insert(0, 4, 4);
+    // directedGraph.insert(1, 2, 6);
+    // directedGraph.insert(1, 3, 2);
+    // directedGraph.insert(1, 4, 1);
+    // directedGraph.insert(2, 3, 10);
+    // directedGraph.insert(3, 4, 8);
 
     // directedGraph.printGraph();
 
@@ -148,7 +157,7 @@ function main() {
     // directedGraph.DFT(0);
     // directedGraph.DFT_Iterative(0);
 
-    directedGraph.BF_Search(0, 3);
+    // directedGraph.BF_Search(0, 3);
 }
 
 main();
