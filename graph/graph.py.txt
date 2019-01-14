@@ -135,28 +135,27 @@ class AdjacencySetGraph(Graph):
             for v in self.get_adjacent_vertices(i):
                 print(i, "-->", v)
 
-g = AdjacencyMatrixGraph(9)
+# g = AdjacencyMatrixGraph(9)
 
-g.add_edge(0, 1)
-g.add_edge(1, 2)
-g.add_edge(2, 7)
-g.add_edge(2, 4)
-g.add_edge(2, 3)
-g.add_edge(1, 5)
-g.add_edge(5, 6)
-g.add_edge(6, 3)
-g.add_edge(3, 4)
-g.add_edge(6, 8)
+# g.add_edge(0, 1)
+# g.add_edge(1, 2)
+# g.add_edge(2, 7)
+# g.add_edge(2, 4)
+# g.add_edge(2, 3)
+# g.add_edge(1, 5)
+# g.add_edge(5, 6)
+# g.add_edge(6, 3)
+# g.add_edge(3, 4)
+# g.add_edge(6, 8)
 
-for i in range(9):
-    print("Adjacent to: ", i, g.get_adjacent_vertices(i))
+# for i in range(4):
+#     print("Adjacent to: ", i, g.get_adjacent_vertices(i))
 
-for i in range(9):
-    print("Indegree: ", i, g.get_indegree(i))
+# for i in range(4):
+#     print("Indegree: ", i, g.get_indegree(i))
 
-for i in range(9):
-    for j in g.get_adjacent_vertices(i):
-        print("Edge weight: ", i, " ", j, " weight: ", g.get_edge_weight(i, j))
+# for i in range(4):
+#     for j in g.get_adjacent_vertices(i):
+#         print("Edge weight: ", i, " ", j, " weight: ", g.get_edge_weight(i, j))
 
-g.display()
-
+# g.display()
