@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\tree\\binary-tree.js"
+            "program": "${workspaceFolder}\\graph\\dijkstra.js"
         }
     ]
 }
