@@ -8,6 +8,7 @@ def spanning_tree(graph):
 
     for v in range(graph.numVertices):
         for neighbor in graph.get_adjacent_vertices(v):
+            print(neighbor)
             priority_queue[(v, neighbor)] = graph.get_edge_weight(v, neighbor)
 
     visited_vertices = set()
@@ -21,7 +22,7 @@ def spanning_tree(graph):
 
     while len(priority_queue.keys()) > 0 and num_edges < graph.numVertices - 1:
         v1, v2 = priority_queue.pop_smallest()
-
+        print(v1, v2)
         if v1 in spanning_tree[v2]:
             continue
 
