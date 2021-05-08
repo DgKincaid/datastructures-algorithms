@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "google-closure-library": "^20180910.0.0",
+    "google-closure-library": "^20200315.0.0",
     "string-hash": "^1.1.3"
   },
   "type": "module"
